@@ -9,13 +9,13 @@ module.exports = {
         const requestUrl = `${OPEN_WEATHER_MAP_URL}&q=${encodedLocation}&appid=${USER_ID}&units=metric`;
 
         return axios.get(requestUrl)
-            .then(function (res) {
+            .then((res) => {
                 if (res.data.cod && res.data.message) {
                     throw new Error(res.data.message);
                 } else {
                     return res.data.main.temp;
                 }
-            }, function (res) {
+            }, (res) => {
                 throw new Error(res.data.message);
             })
             .catch(err => {
